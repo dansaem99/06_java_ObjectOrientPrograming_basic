@@ -4,8 +4,9 @@ package step6_02.method;
  * 
  *  # 클래스의 구성요소
  *  
- *  [1] 멤버변수 , 필드
- *  [2] 메서드
+ *  [1] 멤버변수 , 필드 , 프로퍼티 = 속성
+ *  [2] 메서드 = 기능
+ *  그래서 클래스의 구성은 속성과 기능이 있다.
  * 
  * 
  *  # 메서드 
@@ -22,11 +23,35 @@ package step6_02.method;
  *  
  * */
 
-
+class MethodEx {
+	
+	// 메서드 정의 (define = 정의하다)
+	// undefined
+	void printMenu() {
+		System.out.println("==============");
+		System.out.println("1.로그인");
+		System.out.println("1.로그아웃");
+		System.out.println("1.조회");
+		System.out.println("1.수정");
+		System.out.println("1.탈퇴");
+		System.out.println("==============\n");
+		
+		return;
+	}
+	
+}
 
 public class MethodEx01 {
 
 	public static void main(String[] args) {
+
+		MethodEx object = new MethodEx();
+		
+		// 메서드 호출(call)
+		// 객체.메서드명(); 형태로 사용한다.
+		object.printMenu(); // 자동입력에서 세모는 메서드라는 뜻이다.
+		object.printMenu();
+		object.printMenu();
 		
 	}
 
