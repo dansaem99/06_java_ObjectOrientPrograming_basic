@@ -1,5 +1,7 @@
 package step6_02.method;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Arrays;
 
 class Ex12 {
@@ -20,7 +22,7 @@ class Ex12 {
 		boolean isValidate = false;
 		
 		for (int i = 0; i < email.length(); i++) {
-			if ('@' == email.charAt('i')) {
+			if ('@' == email.charAt(i)) {
 				isValidate = true;
 			}
 		}
@@ -30,27 +32,118 @@ class Ex12 {
 	}
 	
 	// 3. 파일의 확장자를 리턴하는 getFileExtention 메서드를 만드시오.
-	String getFileExtention(String fileName) {return "";}
+	String getFileExtention(String fileName) {
+		
+		try {
+			FileWriter fw = new FileWriter(fileName);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return fileName;
+		
+	}
 	
 	// 4. 숫자의 제곱을 계산하여 리턴하는 myPow 메서드를 만드시오.
-	int myPow(int param1 , int param2) {return 0;}
+	int myPow(int param1 , int param2) {
+		
+		int result = 1;
+		
+		for (int i = 0; i < param2; i++) {
+			result *= param1;
+		}
+		
+		return result;
+	}
 	
 	// 5. 문자열에 특정 문자의 위치를 리턴하는 myIndexOf 메서드를 만드시오.
-	int myIndexOf(String data , String word) {return 0;}
+	int myIndexOf(String data , String word) {
+		
+		int idx = -1;
+		
+		for (int i = 0; i < data.length(); i++) {
+			String temp = data.charAt(i) + "";
+			if (temp.equals(word)) {
+				idx = i;
+				break;
+			}
+		}
+		
+		return idx;
+		
+	}
 	
 	// 6. 문자열에 특정 위치의 문자를 리턴하는 myCharAt 메서드를 만드시오.
 	// 문자열을 문자 배열로 저장) > [안배운문법] 문자열.toCharArray()
 	// 예시)                      > char[] 변수 = 문자열.toCharArray();
-	char myCharAt(String data , int index) {return '0';}
+	char myCharAt(String data , int index) {
+		
+		char[] ch = data.toCharArray();
+		
+		return ch[index];
+		
+	}
 	
 	// 7-1. 문자열의 특정위치부터 끝까지의 잘라진 문자열을 리턴하는 mySubString1 메서드를 만드시오.
-	String mySubString1(String data , int startIndex) {return "";}
+	String mySubString1(String data , int startIndex) {
+		
+		String result = "";
+		
+		for (int i = startIndex; i < data.length(); i++) {
+			result += data.charAt(i);
+		}
+		
+		return result;
+	}
 	
 	// 7-2. 문자열의 특정위치부터 특정위치까지의 잘라진 문자열을 리턴하는 mySubString2 메서드를 만드시오.
-	String mySubString2(String data , int startIndex , int endIndex) {return "";}
+	String mySubString2(String data , int startIndex , int endIndex) {
+		
+		String result = "";
+		
+		for (int i = startIndex; i < endIndex; i++) {
+			result += data.charAt(i);
+		}
+		
+		return result;
+	}
 	
 	// 8. 문자열을 특정 키워드로 잘라내어 배열에 담아서 리턴하는 mySplit 메서드를 만드시오.
-	String[] mySplit(String data , String sep) {return null;}
+	String[] mySplit(String data , String sep) {
+		
+		int sepCnt = 0;
+		
+		for (int i = 0; i < data.length(); i++) {
+			String temp = data.charAt(i) + "";
+			
+			if (temp.equals(sep)) {
+				sepCnt++;
+			}
+		}
+		
+		String[] subStrList = new String[sepCnt + 1];
+		
+		int sepIdx = 0;
+		
+		for(int i = 0; i < subStrList.length; i++) {
+			
+			String word = "";
+			for (int j = sepIdx; j < data.length(); j++) {
+				String temp = data.charAt(j) + "";
+				if (temp.equals(sep)) {
+					sepIdx = j + 1;
+					break;
+				}
+				word += data.charAt(j);
+				sepIdx++;
+			}
+			
+			subStrList[i] = word;
+		}
+		
+		return subStrList;
+		
+	}
 	
 }
 
